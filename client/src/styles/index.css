@@ -1,0 +1,254 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-primary: #0a0a1a;
+  --bg-secondary: #111128;
+  --accent-primary: #4c6ef5;
+  --accent-secondary: #9775fa;
+  --text-primary: #e8eaed;
+  --text-secondary: #9aa0a6;
+  --glass-bg: rgba(255, 255, 255, 0.04);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-hover: rgba(255, 255, 255, 0.08);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 20% 20%, rgba(76, 110, 245, 0.12) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 80%, rgba(151, 117, 250, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 50%, rgba(15, 15, 40, 1) 0%, rgba(10, 10, 26, 1) 100%);
+  z-index: -1;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.028) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.018) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.45), transparent 70%);
+  z-index: -1;
+}
+
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
+}
+
+.glass-hover:hover {
+  background: var(--glass-hover);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.overflow-wrap-anywhere {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.wallet-adapter-button {
+  background: rgba(76, 110, 245, 0.2) !important;
+  border: 1px solid rgba(116, 143, 252, 0.32) !important;
+  border-radius: 14px !important;
+  color: #f4f6ff !important;
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 700 !important;
+  height: 42px !important;
+  padding: 0 18px !important;
+  transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+.wallet-adapter-button:hover {
+  background: rgba(76, 110, 245, 0.34) !important;
+  border-color: rgba(145, 167, 255, 0.55) !important;
+  box-shadow: 0 12px 28px rgba(76, 110, 245, 0.2) !important;
+  transform: translateY(-1px) !important;
+}
+
+.wallet-adapter-button:focus-visible,
+.wallet-adapter-modal-button-close:focus-visible,
+.wallet-adapter-modal-list .wallet-adapter-button:focus-visible {
+  outline: 2px solid rgba(145, 167, 255, 0.55) !important;
+  outline-offset: 2px !important;
+}
+
+.wallet-adapter-button-start-icon {
+  margin-right: 10px !important;
+}
+
+.wallet-adapter-modal {
+  background: rgba(0, 0, 0, 0.62) !important;
+  backdrop-filter: blur(8px) !important;
+}
+
+.wallet-adapter-modal-wrapper {
+  width: min(400px, calc(100vw - 32px)) !important;
+  background: rgba(17, 17, 40, 0.96) !important;
+  backdrop-filter: blur(24px) !important;
+  border: 1px solid rgba(145, 167, 255, 0.18) !important;
+  border-radius: 20px !important;
+  box-shadow: 0 26px 80px rgba(0, 0, 0, 0.48), inset 0 1px 0 rgba(255, 255, 255, 0.05) !important;
+}
+
+.wallet-adapter-modal-title {
+  color: #f5f7ff !important;
+  font-size: 24px !important;
+  line-height: 1.35 !important;
+}
+
+.wallet-adapter-modal-list {
+  margin: 18px 0 0 !important;
+}
+
+.wallet-adapter-modal-list li {
+  margin: 6px 0 !important;
+}
+
+.wallet-adapter-modal-list .wallet-adapter-button {
+  background: rgba(76, 110, 245, 0.18) !important;
+  border: 1px solid rgba(116, 143, 252, 0.35) !important;
+  color: #eef2ff !important;
+  height: 44px !important;
+  border-radius: 12px !important;
+}
+
+.wallet-adapter-modal-list .wallet-adapter-button:hover {
+  background: rgba(76, 110, 245, 0.28) !important;
+  border-color: rgba(145, 167, 255, 0.58) !important;
+}
+
+.wallet-adapter-modal-list-more {
+  color: #bac8ff !important;
+}
+
+.wallet-adapter-modal-button-close {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  transition: background-color 0.2s ease, transform 0.2s ease !important;
+}
+
+.wallet-adapter-modal-button-close:hover {
+  background: rgba(255, 255, 255, 0.16) !important;
+  transform: scale(1.04) !important;
+}
+
+.typing-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--accent-primary);
+  animation: typing 1.4s infinite;
+}
+
+.typing-dot:nth-child(2) { animation-delay: 0.2s; }
+.typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+.activity-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.activity-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, transparent 0%, rgba(255, 255, 255, 0.06) 45%, transparent 70%);
+  transform: translateX(-120%);
+  animation: shimmer 1.8s ease-in-out infinite;
+}
+
+.route-card-selected {
+  border-color: rgba(76, 110, 245, 0.6) !important;
+  background: rgba(76, 110, 245, 0.1) !important;
+  box-shadow: 0 0 20px rgba(76, 110, 245, 0.15);
+}
+
+.font-mono {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+@keyframes typing {
+  0%, 60%, 100% { opacity: 0.3; transform: scale(0.8); }
+  30% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes shimmer {
+  100% { transform: translateX(120%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .wallet-adapter-button {
+    max-width: 150px !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+    padding: 0 14px !important;
+  }
+}
