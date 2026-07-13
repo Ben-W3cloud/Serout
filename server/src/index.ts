@@ -36,7 +36,7 @@ app.use('/api', parseRouter);
 app.use('/api', routesRouter);
 
 // Static Assignmenets
-const clientPath = path.join(__dirname, '..', 'client', 'dist');
+const clientPath = path.join(__dirname, '..','..', 'client', 'dist');
 
 app.use(express.static(clientPath));
 
