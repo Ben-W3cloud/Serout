@@ -9,6 +9,10 @@ import healthRouter from './routes/health.route.js';
 import parseRouter from './routes/parse.route.js';
 import routesRouter from './routes/routes.route.js';
 import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
 
@@ -32,12 +36,13 @@ app.use('/api', parseRouter);
 app.use('/api', routesRouter);
 
 // Static Assignmenets
-app.use(express.static(path.join(__dirname, 'client', 'dist')));
+const clientPath = path.join(__dirname, '..', 'client', 'dist');
+
+app.use(express.static(clientPath));
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'client', 'dist', 'index.html'));
+  res.sendFile(path.join(clientPath, 'index.html'));
 });
-
 
 // Error handling
 app.use(errorHandler);
