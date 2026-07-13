@@ -8,6 +8,7 @@ import { apiLimiter } from './middleware/rate-limiter.js';
 import healthRouter from './routes/health.route.js';
 import parseRouter from './routes/parse.route.js';
 import routesRouter from './routes/routes.route.js';
+import path from 'path';
 
 const app = express();
 
@@ -31,13 +32,12 @@ app.use('/api', parseRouter);
 app.use('/api', routesRouter);
 
 // Static Assignmenets
-const path = require('path');
 app.use(express.static(path.join(__dirname, 'client', 'dist')));
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'client', 'dist', 'index.html'));
 });
-  
+
 
 // Error handling
 app.use(errorHandler);
